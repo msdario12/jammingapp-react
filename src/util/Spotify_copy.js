@@ -1,5 +1,5 @@
 const clientID = "37e04e7dc75246b1a36655476b5a7b15";
-const redirectUri = "http://localhost:3000/";
+const redirectUri = "https://mellifluous-alfajores-f54794.netlify.app/";
 let accesToken = "";
 const Spotify = {
   getAccessToken() {
