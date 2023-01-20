@@ -41,6 +41,8 @@ const Spotify = {
         artist: track.artists[0].name,
         album: track.album.name,
         uri: track.uri,
+        preview_url: track.preview_url
+
       }));
       return arrayResponse;
     }
@@ -84,6 +86,7 @@ const Spotify = {
       }
     }
   },
+
 };
 
 export default Spotify;

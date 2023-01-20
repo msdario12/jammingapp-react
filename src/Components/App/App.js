@@ -4,6 +4,7 @@ import { SearchBar } from "../SearchBar/SearchBar";
 import { SearchResult } from "../SearchResults/SearchResults";
 import { Playlist } from "../Playlist/Playlist";
 import Spotify from "../../util/Spotify_copy";
+import {SpotifyPlayer} from "../SpotifyPlayer/SpotifyPlayer"
 
 class App extends React.Component {
   constructor(props) {
@@ -12,12 +13,14 @@ class App extends React.Component {
       searchResults: [],
       playlistName: "",
       playlistTracks: [],
+      urlPreviewSong: ''
     };
     this.addTrack = this.addTrack.bind(this);
     this.removeTrack = this.removeTrack.bind(this);
     this.updatePlaylistName = this.updatePlaylistName.bind(this);
     this.savePlaylist = this.savePlaylist.bind(this);
     this.search = this.search.bind(this);
+    this.playSong = this.playSong.bind(this);
   }
 
   addTrack(track) {
@@ -57,6 +60,10 @@ class App extends React.Component {
     });
   }
 
+  playSong(urlPreview) {
+    this.setState({urlPreviewSong : urlPreview});
+  }
+
   render() {
     return (
       <div>
@@ -65,10 +72,12 @@ class App extends React.Component {
         </h1>
         <div className="App">
           <SearchBar onSearch={this.search} />
+          <SpotifyPlayer src={this.state.urlPreviewSong}/>
           <div className="App-playlist">
             <SearchResult
               searchResults={this.state.searchResults}
               onAdd={this.addTrack}
+              onPlay={this.playSong}
             />
             <Playlist
               playlistName={this.state.playlistName}
@@ -77,6 +86,10 @@ class App extends React.Component {
               onNameChange={this.updatePlaylistName}
               onSave={this.savePlaylist}
             />
+          <div className="SpotifyPlayer">
+            <h3>This is a Spotify Player</h3>
+            
+          </div>
           </div>
         </div>
       </div>

@@ -15,6 +15,7 @@ export class TrackList extends React.Component {
                 onAdd={this.props.onAdd}
                 onRemove={this.props.onRemove}
                 isRemoval={this.props.isRemoval}
+                onPlay={this.props.onPlay}
               />
             );
           })}
